@@ -14,17 +14,17 @@ import argparse
 
 if __name__ == "__main__":
     # Argument parser
-    parser = argparse.ArgumentParser(description="Train ResNet on the Square3 Dataset")
+    parser = argparse.ArgumentParser(description="Train ResNet on the square Dataset")
     parser.add_argument(
         "--folder_path",
         type=str,
-        default="/data/square3",
+        default="/data/square",
         help="Path to the dataset folder",
     )
     parser.add_argument(
         "--name",
         type=str,
-        default="square3",
+        default="square",
         help="Name for the output folder",
     )
     parser.add_argument(

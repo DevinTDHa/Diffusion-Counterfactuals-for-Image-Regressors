@@ -25,6 +25,8 @@ from torch.utils.data.distributed import DistributedSampler
 
 from thesis_utils.basf_dataset import BASFDataset
 from thesis_utils.squares_dataset import SquaresDataset
+import os
+
 
 data_paths = {
     "ffhqlmdb256": os.path.expanduser("datasets/ffhq256.lmdb"),
@@ -40,8 +42,7 @@ data_paths = {
         "datasets/celeba_anno/CelebAMask-HQ-attribute-anno.txt"
     ),
     "celeba_relight": os.path.expanduser("datasets/celeba_hq_light/celeba_light.txt"),
-    "basf512": "/data/basf",
-    "square64": "/data/square3",
+    "square64": os.environ["DCFIR_OUTPATH"] + "/square",
 }
 
 

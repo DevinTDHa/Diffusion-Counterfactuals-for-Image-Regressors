@@ -23,10 +23,10 @@ source /home/tha/hydra.env
 
 apptainer run \
 	-B /home/space/datasets:/home/space/datasets \
-	-B /home/tha/datasets/squashed/square3.sqfs:/data/square3:image-src=/ \
+	-B /home/tha/datasets/squashed/square.sqfs:/data/square:image-src=/ \
 	--nv \
 	~/apptainers/thesis.sif \
-	python train_resnet_square3.py \
-	--folder_path /data/square3/ \
+	python train_resnet_square.py \
+	--folder_path /data/square/ \
 	--name $NAME \
 	$ORACLE

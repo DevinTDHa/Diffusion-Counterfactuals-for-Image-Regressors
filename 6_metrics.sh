@@ -1,0 +1,15 @@
+#!/bin/bash
+if [ -z "$DCFIR_OUTPATH" ]; then
+    echo "DCFIR_OUTPATH is not defined. Please set it manually before running this script."
+    exit 1
+fi
+
+ACRE_CELEBAHQ_RESULTS="$DCFIR_OUTPATH/ac-re/celebahq"
+DIFFAERE_CELEBAHQ_RESULTS="$DCFIR_OUTPATH/diffae-re/celebahq"
+
+echo "Running metrics for Squares"
+bash scripts/metrics/scripts/run_metrics_squares_mirror.sh
+
+echo "Running metrics CelebaHQ..."
+bash scripts/metrics/scripts/run_folders.sh $ACRE_CELEBAHQ_RESULTS
+bash scripts/metrics/scripts/run_folders.sh $DIFFAERE_CELEBAHQ_RESULTS

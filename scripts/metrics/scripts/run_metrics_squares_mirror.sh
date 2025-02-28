@@ -1,8 +1,13 @@
 #!/bin/bash
-IMGS_FOLDER="/home/tha/datasets/square3_mirror/squares_lower/imgs"
-FAKE_FOLDER_ACE="/home/tha/thesis_runs/chosen_results/ace/square/square3_mirror_lower/cf"
-FAKE_FOLDER_DAE="/home/tha/thesis_runs/chosen_results/dae/square/square3_mirror_lower/cf"
-OUTPUT_FOLDER="/home/tha/thesis_runs/metrics/square/square3_mirror_lower"
+if [ -z "$DCFIR_OUTPATH" ]; then
+    echo "DCFIR_OUTPATH is not defined. Please set it manually before running this script."
+    exit 1
+fi
+
+IMGS_FOLDER="$DCFIR_OUTPATH/datasets/square_val/squares_upper/imgs"
+FAKE_FOLDER_ACE="$DCFIR_OUTPATH/results/ac-re/square_mirror_upper/cf"
+FAKE_FOLDER_DAE="$DCFIR_OUTPATH/results/diffae-re/square_mirror_upper/cf"
+OUTPUT_FOLDER="$DCFIR_OUTPATH/metrics/square/square_mirror_upper"
 
 echo "Running reference metrics for $IMGS_FOLDER"
 apptainer run \
@@ -14,10 +19,10 @@ apptainer run \
     --fake_folder $FAKE_FOLDER_DAE \
     $OUTPUT_FOLDER
 
-IMGS_FOLDER="/home/tha/datasets/square3_mirror/squares_upper/imgs"
-FAKE_FOLDER_ACE="/home/tha/thesis_runs/chosen_results/ace/square/square3_mirror_upper/cf"
-FAKE_FOLDER_DAE="/home/tha/thesis_runs/chosen_results/dae/square/square3_mirror_upper/cf"
-OUTPUT_FOLDER="/home/tha/thesis_runs/metrics/square/square3_mirror_upper"
+IMGS_FOLDER="$DCFIR_OUTPATH/datasets/square_val/squares_lower/imgs"
+FAKE_FOLDER_ACE="$DCFIR_OUTPATH/results/ac-re/square_mirror_lower/cf"
+FAKE_FOLDER_DAE="$DCFIR_OUTPATH/results/diffae-re/square_mirror_lower/cf"
+OUTPUT_FOLDER="$DCFIR_OUTPATH/metrics/square/square_mirror_lower"
 
 echo "Running reference metrics for $IMGS_FOLDER"
 apptainer run \

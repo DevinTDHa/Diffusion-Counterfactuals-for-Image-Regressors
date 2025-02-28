@@ -40,5 +40,6 @@ The reproduction code is structured as follows (assumes running from this direct
 3. `3_train_square_generators.sh`: Trains the ACE DDPM and Diff-AE for the Square dataset.
 4. `4_train_regressors.sh`: Trains the regression and oracle models.
 5. `5_produce_results.sh`: Runs the experiments to produce the quantitative and qualitative results.
+5. `6_metrics.sh`: Calculates the metrics for the experiments.
 
 After running the scripts, by default the results will be in `DCFIR_OUTPATH=$PWD/diff_cf_ir_results`.

@@ -10,24 +10,24 @@ set -x
 source /home/tha/hydra.env
 
 # Define variables for the arguments
-GMODEL_CONFIG="/home/tha/PyTorch-VAE/runs/VQVAE_square3/version_0/square_vq_vae.yaml"
-GMODEL_PATH="/home/tha/PyTorch-VAE/runs/VQVAE_square3/version_0/checkpoints/epoch=94-step=9500.ckpt"
-RMODEL_PATH="/home/tha/master-thesis-xai/diff_cf_ir/scripts/train/runs/square3/version_0/checkpoints/last.ckpt"
+GMODEL_CONFIG="/home/tha/PyTorch-VAE/runs/VQVAE_square/version_0/square_vq_vae.yaml"
+GMODEL_PATH="/home/tha/PyTorch-VAE/runs/VQVAE_square/version_0/checkpoints/epoch=94-step=9500.ckpt"
+RMODEL_PATH="/home/tha/master-thesis-xai/diff_cf_ir/scripts/train/runs/square/version_0/checkpoints/last.ckpt"
 ATTACK_STYLE="z"
 NUM_STEPS=100
 LR=0.005
 CONFIDENCE_THRESHOLD=0.05
 TARGET=mirror
-IMG_FOLDER="/home/tha/datasets/square3_mirrored/squares_upper/"
+IMG_FOLDER="/home/tha/datasets/square_mirrored/squares_upper/"
 SIZE=64
-RESULT_DIR="/home/tha/thesis_runs/diffeocf_results/square3_mirror_upper_vqvae"
+RESULT_DIR="/home/tha/thesis_runs/diffeocf_results/square_mirror_upper_vqvae"
 
 apptainer run \
     -B /home/space/datasets:/home/space/datasets \
-    -B /home/tha/datasets/squashed/square3.sqfs:/data/square3:image-src=/ \
+    -B /home/tha/datasets/squashed/square.sqfs:/data/square:image-src=/ \
     --nv \
     ~/apptainers/thesis.sif \
-    python run_diffeocf_vqvae_square3.py \
+    python run_diffeocf_vqvae_square.py \
     --gmodel_path $GMODEL_PATH \
     --gmodel_config $GMODEL_CONFIG \
     --rmodel_path $RMODEL_PATH \

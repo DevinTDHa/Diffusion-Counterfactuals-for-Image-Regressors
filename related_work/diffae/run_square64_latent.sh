@@ -11,6 +11,6 @@ export NCCL_DEBUG=INFO
 export PYTHONFAULTHANDLER=1
 
 apptainer run \
-    -B /home/tha/datasets/squashed/square3.sqfs:/data/square3:image-src=/ \
+    -B /home/tha/datasets/squashed/square.sqfs:/data/square:image-src=/ \
     --nv /home/tha/apptainers/thesis.sif \
     python run_square64_latent.py

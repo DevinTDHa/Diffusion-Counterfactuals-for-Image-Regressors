@@ -10,7 +10,7 @@ IMDB_CLEAN_PATH=$DCFIR_OUTPATH/datasets/imdb-clean
 
 # Train Square Regressor
 echo "Training Square Regressor..."
-python scripts/train/train_resnet_square3.py --folder_path $SQUARE_PATH --name square
+python scripts/train/train_resnet_square.py --folder_path $SQUARE_PATH --name square
 # Results in $DCFIR_OUTPATH/models/regressors/square/version_0/checkpoints/last.ckpt
 
 echo "Training CelebAHq regressor and oracle..."
@@ -22,6 +22,7 @@ python train_imdb_clean.py \
     --name "celebahq" \
     --densenet_weights "$WEIGHTS_PATH" \
     --image_size 256
+# Results in $DCFIR_OUTPATH/models/regressors/celebahq/version_0/checkpoints/last.ckpt
 
 # Train CelebAHQ Oracle
 python train_imdb_clean.py \
@@ -30,3 +31,4 @@ python train_imdb_clean.py \
     --densenet_weights "$WEIGHTS_PATH" \
     --image_size 256 \
     $FULL_FINETUNE $ORACLE
+# Results in $DCFIR_OUTPATH/models/regressors/celebahq_oracle/version_0/checkpoints/last.ckpt
