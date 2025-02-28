@@ -5,7 +5,6 @@ Train a diffusion model on images.
 import argparse
 
 from guided_diffusion import dist_util, logger
-from guided_diffusion.image_datasets import load_data_celeba
 from guided_diffusion.resample import create_named_schedule_sampler
 from guided_diffusion.script_util import (
     model_and_diffusion_defaults,
@@ -14,7 +13,7 @@ from guided_diffusion.script_util import (
     add_dict_to_argparser,
 )
 from guided_diffusion.train_util import TrainLoop
-from thesis_utils.healthcare_datasets import RetinaMNISTDataset
+from diff_cf_ir.squares_dataset import SquaresDataset
 from torch.utils.data import DataLoader
 
 
@@ -35,7 +34,7 @@ def main():
 
     logger.log("creating retinaMNIST loader...")
 
-    dataset = RetinaMNISTDataset(mode="ace_train_ddpm")
+    dataset = SquaresDataset(root=args.data_dir, mode="ace")
 
     def infinite_iterator():
         dataloader = DataLoader(
@@ -66,7 +65,7 @@ def main():
     ).run_loop()
 
 
-def create_argparser():
+def create_argparser(output_path: str):
     defaults = dict(
         schedule_sampler="uniform",
         lr=1e-4,
@@ -80,21 +79,31 @@ def create_argparser():
         resume_checkpoint="",
         use_fp16=False,
         fp16_scale_growth=1e-3,
-        output_path="/home/tha/runs/ace/retinaMNIST_ddpm",
+        output_path=output_path,
         gpus="",
         use_hdf5=False,
         use_celeba_HQ=False,
     )
     defaults.update(model_and_diffusion_defaults())
 
-    # RetinaMNIST settings
+    # Square settings
     defaults.update(
         {
-            "image_size": 128,
+            "image_size": 64,
         }
     )
     parser = argparse.ArgumentParser()
     add_dict_to_argparser(parser, defaults)
+    parser.add_argument(
+        "data_dir",
+        type=str,
+        help="Path to the train square dataset directory.",
+    )
+    parser.add_argument(
+        "output_path",
+        type=str,
+        help="Where to save the output models.",
+    )
     return parser
 
 

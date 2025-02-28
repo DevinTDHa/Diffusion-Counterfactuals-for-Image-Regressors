@@ -25,21 +25,21 @@ import matplotlib
 
 matplotlib.use("Agg")  # to disable display
 
-from thesis_utils.counterfactuals import (
+from diff_cf_ir.counterfactuals import (
     CFResult,
     save_cf_results,
     update_results_true_latents,
 )
-from thesis_utils.file_utils import (
+from diff_cf_ir.file_utils import (
     assert_paths_exist,
     create_result_dir,
     deterministic_run,
     dump_args,
     save_img_threaded,
 )
-from thesis_utils.image_folder_dataset import default_transforms
-from thesis_utils.models import load_resnet
-from thesis_utils.squares_dataset import (
+from diff_cf_ir.image_folder_dataset import default_transforms
+from diff_cf_ir.models import load_resnet
+from diff_cf_ir.squares_dataset import (
     get_experiment_targets,
     SquaresDataset,
     inner_square_color,

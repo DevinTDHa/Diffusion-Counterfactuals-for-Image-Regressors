@@ -3,8 +3,8 @@ import os
 from tqdm import tqdm
 import torch
 
-from thesis_utils.metrics import get_regr_confidence
-from thesis_utils.file_utils import save_img_threaded
+from diff_cf_ir.metrics import get_regr_confidence
+from diff_cf_ir.file_utils import save_img_threaded
 
 
 # =======================================================
