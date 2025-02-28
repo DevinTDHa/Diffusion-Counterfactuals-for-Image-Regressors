@@ -1,11 +1,18 @@
 from diff_cf_ir.file_utils import deterministic_run
 from lightning.pytorch.loggers import TensorBoardLogger
 from lightning.pytorch.callbacks import ModelCheckpoint
+import os
 
 import lightning as L
 
 
-def setup_trainer(name: str, seed: int = 0, save_dir="/home/tha/thesis_runs/regressor"):
+if "DCFIR_OUTPATH" in os.environ:
+    OUTPATH = os.path.join(os.environ["DCFIR_OUTPATH"], "regressors")
+else:
+    raise ValueError("Environment variable DCFIR_OUTPATH not set.")
+
+
+def setup_trainer(name: str, seed: int = 0, save_dir=OUTPATH):
     deterministic_run(seed=seed)
 
     checkpoint_callback = ModelCheckpoint(

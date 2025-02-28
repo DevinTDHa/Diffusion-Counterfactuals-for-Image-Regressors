@@ -4,11 +4,6 @@ import os
 from diff_cf_ir.file_utils import deterministic_run, dump_args
 from diff_cf_ir.train import setup_trainer
 
-
-
-
-from lightning import seed_everything
-
 import torch
 import torchvision.transforms as transforms
 
