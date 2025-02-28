@@ -22,8 +22,9 @@ For a complete reproduction, we provide Python code and shell script.
 
 Requirements:
 
-1. The code assumes that the conda environment defined in [environment.yaml](/environment.yaml) is active.
-2. The pre-trained ACE and Diff-AE models described in [Pre-trained models](#pre-trained-models) needs to be in the [pretrained_models](/pretrained_models) folder.
+- We developed this code to run on an NVIDIA A100 80GB GPU. Adjust batch sizes to your available RAM.
+- The code assumes that the conda environment defined in [environment.yaml](/environment.yaml) is active.
+- The pre-trained ACE and Diff-AE models described in [Pre-trained models](#pre-trained-models) needs to be in the [pretrained_models](/pretrained_models) folder.
 
 The reproduction code is structured as follows (assumes running from this directory)
 

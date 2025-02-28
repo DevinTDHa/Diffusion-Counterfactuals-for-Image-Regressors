@@ -4,8 +4,8 @@ import os
 from diff_cf_ir.file_utils import dump_args
 
 
-sys.path.append("/home/tha/master-thesis-xai/diff_cf_ir")
-sys.path.append(os.getcwd())
+
+
 
 import torch
 from diff_cf_ir.train import setup_trainer

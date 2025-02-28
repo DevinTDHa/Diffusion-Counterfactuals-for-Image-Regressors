@@ -4,8 +4,8 @@ import os
 
 from diff_cf_ir.file_utils import dump_args
 
-sys.path.append("/home/tha/master-thesis-xai/diff_cf_ir")
-sys.path.append(os.getcwd())
+
+
 
 import torch
 import torchvision.transforms as T

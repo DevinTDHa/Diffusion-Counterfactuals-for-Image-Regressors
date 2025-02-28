@@ -1,8 +1,8 @@
 import sys
 import os
 
-sys.path.append("/home/tha/diffae/")
-sys.path.append(os.getcwd())
+
+
 
 import torch
 from templates import *

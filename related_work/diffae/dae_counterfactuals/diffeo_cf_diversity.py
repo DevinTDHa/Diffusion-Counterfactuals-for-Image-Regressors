@@ -1,10 +1,10 @@
 import sys
 import os
 
-sys.path.append("/home/tha/diffae/")
-sys.path.append("/home/tha/master-thesis-xai/thesis_utils")
-sys.path.append("/home/tha/diffeo-cf")
-sys.path.append(os.getcwd())
+
+
+
+
 
 from dae_counterfactuals.models import DAEModel
 

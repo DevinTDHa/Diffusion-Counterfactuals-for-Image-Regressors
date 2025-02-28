@@ -3,8 +3,8 @@ import os
 
 from scripts.metrics.run_metrics import ImageFolderDataset
 
-sys.path.append("/home/tha/master-thesis-xai/diff_cf_ir")
-sys.path.append(os.getcwd())
+
+
 
 import numpy as np
 from diff_cf_ir.models import load_resnet

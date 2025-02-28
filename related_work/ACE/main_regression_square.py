@@ -35,7 +35,6 @@ from diff_cf_ir.file_utils import (
     create_result_dir,
     deterministic_run,
     dump_args,
-    save_img_threaded,
 )
 from diff_cf_ir.image_folder_dataset import default_transforms
 from diff_cf_ir.models import load_resnet
@@ -43,7 +42,6 @@ from diff_cf_ir.squares_dataset import (
     get_experiment_targets,
     SquaresDataset,
     inner_square_color,
-    global_counterfactual_visualization_squares,
 )
 
 
@@ -276,7 +274,6 @@ def main() -> None:
             args.model_path,
             args.rmodel_path,
             args.image_folder,
-            "decision_boundary.npy",
         ]
     )
     result_dir = create_result_dir(osp.join(args.output_path))
@@ -465,16 +462,3 @@ def main() -> None:
         args.confidence_threshold,
     )
     save_cf_results(diffeocf_results, result_dir)
-
-    global_counterfactual_visualization_squares(
-        filename=os.path.join(result_dir, "counterfactual_visualization.png"),
-        input_imgs=xs,
-        counterfactuals=x_cfs,
-        y_initials=y_initials,
-        y_ends=y_ends,
-        hints=masks,
-    )
-
-
-if __name__ == "__main__":
-    main()

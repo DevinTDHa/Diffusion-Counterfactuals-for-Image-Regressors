@@ -3,10 +3,10 @@ import os
 
 from lightning import seed_everything
 
-sys.path.append("/home/tha/diffae/")
-sys.path.append("/home/tha/master-thesis-xai/thesis_utils")
-sys.path.append("/home/tha/diffeo-cf")
-sys.path.append(os.getcwd())
+
+
+
+
 
 import argparse
 import torch

@@ -19,7 +19,6 @@ import argparse
 
 from diff_cf_ir.models import load_resnet
 from diff_cf_ir.squares_dataset import (
-    global_counterfactual_visualization_squares,
     SquaresDataset,
     get_experiment_targets,
     inner_square_color,
@@ -103,7 +102,6 @@ if __name__ == "__main__":
             args.gmodel_path,
             args.rmodel_path,
             args.image_folder,
-            "decision_boundary.npy",
         ]
     )
     # Load models and data info
@@ -179,12 +177,3 @@ if __name__ == "__main__":
         args.confidence_threshold,
     )
     save_cf_results(diffeocf_results, args.result_dir)
-
-    global_counterfactual_visualization_squares(
-        filename=os.path.join(args.result_dir, "counterfactual_visualization.png"),
-        input_imgs=xs,
-        counterfactuals=x_cfs,
-        y_initials=y_initials,
-        y_ends=y_ends,
-        hints=masks,
-    )

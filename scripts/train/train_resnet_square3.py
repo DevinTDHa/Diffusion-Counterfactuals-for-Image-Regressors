@@ -4,8 +4,8 @@ import os
 from diff_cf_ir.file_utils import deterministic_run, dump_args
 from diff_cf_ir.train import setup_trainer
 
-sys.path.append("/home/tha/master-thesis-xai/diff_cf_ir")
-sys.path.append(os.getcwd())
+
+
 
 from lightning import seed_everything
 
