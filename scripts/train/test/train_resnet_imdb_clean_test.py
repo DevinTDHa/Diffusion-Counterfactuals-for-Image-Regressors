@@ -2,17 +2,17 @@ import json
 import sys
 import os
 
-from thesis_utils.file_utils import dump_args
+from diff_cf_ir.file_utils import dump_args
 
-sys.path.append("/home/tha/master-thesis-xai/thesis_utils")
+sys.path.append("/home/tha/master-thesis-xai/diff_cf_ir")
 sys.path.append(os.getcwd())
 
 import torch
 import torchvision.transforms as T
 
-from thesis_utils.imdb_clean_dataset import ImdbCleanDataModule
-from thesis_utils.models import ResNetRegression
-from thesis_utils.train import setup_trainer
+from diff_cf_ir.imdb_clean_dataset import ImdbCleanDataModule
+from diff_cf_ir.models import ResNetRegression
+from diff_cf_ir.train import setup_trainer
 import argparse
 
 

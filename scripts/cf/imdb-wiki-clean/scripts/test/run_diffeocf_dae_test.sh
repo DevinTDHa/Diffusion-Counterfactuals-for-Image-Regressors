@@ -5,12 +5,12 @@
 #SBATCH --ntasks-per-node=2
 #SBATCH --constraint=80gb
 #SBATCH --output=logs/job-%x-%j.out
-#SBATCH --chdir=/home/tha/master-thesis-xai/thesis_utils/scripts/cf/imdb-wiki-clean
+#SBATCH --chdir=/home/tha/master-thesis-xai/diff_cf_ir/scripts/cf/imdb-wiki-clean
 
 # Define variables for the arguments
 GMODEL_PATH="/home/tha/diffae/checkpoints/ffhq256_autoenc/last.ckpt"
-RMODEL_PATH="/home/tha/master-thesis-xai/thesis_utils/scripts/train/runs/imdb_clean-256/version_0/checkpoints/last.ckpt"
-RORACLE_PATH="/home/tha/master-thesis-xai/thesis_utils/scripts/train/runs/imdb_clean_oracle-256/version_0/checkpoints/last.ckpt"
+RMODEL_PATH="/home/tha/master-thesis-xai/diff_cf_ir/scripts/train/runs/imdb_clean-256/version_0/checkpoints/last.ckpt"
+RORACLE_PATH="/home/tha/master-thesis-xai/diff_cf_ir/scripts/train/runs/imdb_clean_oracle-256/version_0/checkpoints/last.ckpt"
 NUM_STEPS=100
 LR=0.005
 CONFIDENCE_THRESHOLD=0.05

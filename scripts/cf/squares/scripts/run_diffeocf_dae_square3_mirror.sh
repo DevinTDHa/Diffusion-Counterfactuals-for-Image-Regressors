@@ -5,7 +5,7 @@
 #SBATCH --ntasks-per-node=4
 #SBATCH --output=logs/job-%x-%j.out
 #SBATCH --constraint="80gb"
-#SBATCH --chdir=/home/tha/master-thesis-xai/thesis_utils/scripts/cf/squares
+#SBATCH --chdir=/home/tha/master-thesis-xai/diff_cf_ir/scripts/cf/squares
 SQFS_FILE="/home/tha/datasets/squashed/square3_mirror.sqfs"
 if [ ! -f /tmp/data.sqfs ]; then
     cp $SQFS_FILE /tmp/data.sqfs
@@ -13,7 +13,7 @@ fi
 
 # Define variables for the arguments
 GMODEL_PATH="/home/tha/diffae/checkpoints/square64_ddim/last.ckpt"
-RMODEL_PATH="/home/tha/master-thesis-xai/thesis_utils/scripts/train/runs/square3/version_0/checkpoints/last.ckpt"
+RMODEL_PATH="/home/tha/master-thesis-xai/diff_cf_ir/scripts/train/runs/square3/version_0/checkpoints/last.ckpt"
 NUM_STEPS=200
 BATCH_SIZE=38
 LR=0.002

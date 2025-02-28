@@ -4,7 +4,7 @@
 #SBATCH --gpus-per-node=1
 #SBATCH --ntasks-per-node=2
 #SBATCH --output=logs/job-%x-%j.out
-#SBATCH --chdir=/home/tha/master-thesis-xai/thesis_utils/scripts/train/
+#SBATCH --chdir=/home/tha/master-thesis-xai/diff_cf_ir/scripts/train/
 set -x
 
 if [ -z "$1" ] || [ -z "$2" ]; then

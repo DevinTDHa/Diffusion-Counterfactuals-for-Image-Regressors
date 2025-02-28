@@ -4,13 +4,13 @@
 #SBATCH --gpus-per-node=1
 #SBATCH --ntasks-per-node=2
 #SBATCH --output=logs/job-%x-%j.out
-#SBATCH --chdir=/home/tha/master-thesis-xai/thesis_utils/scripts/cf/imdb-wiki-clean
+#SBATCH --chdir=/home/tha/master-thesis-xai/diff_cf_ir/scripts/cf/imdb-wiki-clean
 
 # Define variables for the arguments
 GMODEL_PATH="/home/tha/diffeo-cf/models/2022_Counterfactuals_pretrained_models/checkpoints/generative_models/CelebA_Glow.pth"
 GMODEL_TYPE="Flow"
-RMODEL_PATH="/home/tha/master-thesis-xai/thesis_utils/scripts/train/runs/imdb_clean-64/version_0/checkpoints/last.ckpt"
-RORACLE_PATH="/home/tha/master-thesis-xai/thesis_utils/scripts/train/runs/imdb_clean_oracle-64/version_0/checkpoints/last.ckpt"
+RMODEL_PATH="/home/tha/master-thesis-xai/diff_cf_ir/scripts/train/runs/imdb_clean-64/version_0/checkpoints/last.ckpt"
+RORACLE_PATH="/home/tha/master-thesis-xai/diff_cf_ir/scripts/train/runs/imdb_clean_oracle-64/version_0/checkpoints/last.ckpt"
 DATASET="CelebA"
 ATTACK_STYLE="z"
 NUM_STEPS=100

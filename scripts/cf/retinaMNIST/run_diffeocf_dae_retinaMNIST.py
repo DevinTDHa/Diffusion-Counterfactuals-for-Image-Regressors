@@ -1,10 +1,10 @@
 import os
 from tqdm import tqdm
-from thesis_utils.diffeocf import (
+from diff_cf_ir.diffeocf import (
     DiffeoCF,
 )
 
-from thesis_utils.counterfactuals import (
+from diff_cf_ir.counterfactuals import (
     CFResult,
     save_cf_results,
     update_results_oracle,
@@ -12,15 +12,15 @@ from thesis_utils.counterfactuals import (
 import torch
 import argparse
 
-from thesis_utils.file_utils import (
+from diff_cf_ir.file_utils import (
     assert_paths_exist,
     create_result_dir,
     deterministic_run,
     dump_args,
 )
-from thesis_utils.generators import DAE
-from thesis_utils.healthcare_datasets import RetinaMNISTDataset
-from thesis_utils.models import load_resnet
+from diff_cf_ir.generators import DAE
+from diff_cf_ir.healthcare_datasets import RetinaMNISTDataset
+from diff_cf_ir.models import load_resnet
 
 
 def init_args():

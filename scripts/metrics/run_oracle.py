@@ -3,12 +3,12 @@ import os
 
 from scripts.metrics.run_metrics import ImageFolderDataset
 
-sys.path.append("/home/tha/master-thesis-xai/thesis_utils")
+sys.path.append("/home/tha/master-thesis-xai/diff_cf_ir")
 sys.path.append(os.getcwd())
 
 import numpy as np
-from thesis_utils.models import load_resnet
-from thesis_utils.file_utils import rename_if_exists
+from diff_cf_ir.models import load_resnet
+from diff_cf_ir.file_utils import rename_if_exists
 import torch
 import argparse
 import os

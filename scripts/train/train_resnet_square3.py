@@ -1,10 +1,10 @@
 import sys
 import os
 
-from thesis_utils.file_utils import deterministic_run, dump_args
-from thesis_utils.train import setup_trainer
+from diff_cf_ir.file_utils import deterministic_run, dump_args
+from diff_cf_ir.train import setup_trainer
 
-sys.path.append("/home/tha/master-thesis-xai/thesis_utils")
+sys.path.append("/home/tha/master-thesis-xai/diff_cf_ir")
 sys.path.append(os.getcwd())
 
 from lightning import seed_everything
@@ -12,8 +12,8 @@ from lightning import seed_everything
 import torch
 import torchvision.transforms as transforms
 
-from thesis_utils.squares_dataset import SquaresDataModule
-from thesis_utils.models import ResNetRegression
+from diff_cf_ir.squares_dataset import SquaresDataModule
+from diff_cf_ir.models import ResNetRegression
 import argparse
 
 

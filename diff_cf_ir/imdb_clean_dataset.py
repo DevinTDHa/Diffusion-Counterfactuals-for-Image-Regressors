@@ -8,7 +8,7 @@ import csv
 import lightning as L
 from PIL import Image
 
-from thesis_utils.img_utils import (
+from diff_cf_ir.img_utils import (
     create_cropped_images_old,
     create_cropped_images_like_celebahq,
 )

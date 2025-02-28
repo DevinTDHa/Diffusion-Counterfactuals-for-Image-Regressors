@@ -1,5 +1,5 @@
 import os
-from thesis_utils.debug import register_pdb_hook
+from diff_cf_ir.debug import register_pdb_hook
 
 if (
     "THESIS_DEBUG" in os.environ

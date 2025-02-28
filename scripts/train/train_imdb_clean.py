@@ -1,13 +1,13 @@
 import os
 
-from thesis_utils.file_utils import dump_args
+from diff_cf_ir.file_utils import dump_args
 
 import torch
 import torchvision.transforms as T
 
-from thesis_utils.imdb_clean_dataset import ImdbCleanDataModule
-from thesis_utils.models import ResNetRegression, DenseNetRegression
-from thesis_utils.train import setup_trainer
+from diff_cf_ir.imdb_clean_dataset import ImdbCleanDataModule
+from diff_cf_ir.models import ResNetRegression, DenseNetRegression
+from diff_cf_ir.train import setup_trainer
 import argparse
 
 

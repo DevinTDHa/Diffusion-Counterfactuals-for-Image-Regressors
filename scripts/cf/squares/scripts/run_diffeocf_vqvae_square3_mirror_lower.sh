@@ -4,7 +4,7 @@
 #SBATCH --gpus-per-node=1
 #SBATCH --ntasks-per-node=2
 #SBATCH --output=logs/job-%x-%j.out
-#SBATCH --chdir=/home/tha/master-thesis-xai/thesis_utils/scripts/cf/squares
+#SBATCH --chdir=/home/tha/master-thesis-xai/diff_cf_ir/scripts/cf/squares
 set -x
 
 source /home/tha/hydra.env
@@ -12,7 +12,7 @@ source /home/tha/hydra.env
 # Define variables for the arguments
 GMODEL_CONFIG="/home/tha/PyTorch-VAE/runs/VQVAE_square3/version_0/square_vq_vae.yaml"
 GMODEL_PATH="/home/tha/PyTorch-VAE/runs/VQVAE_square3/version_0/checkpoints/epoch=94-step=9500.ckpt"
-RMODEL_PATH="/home/tha/master-thesis-xai/thesis_utils/scripts/train/runs/square3/version_0/checkpoints/last.ckpt"
+RMODEL_PATH="/home/tha/master-thesis-xai/diff_cf_ir/scripts/train/runs/square3/version_0/checkpoints/last.ckpt"
 ATTACK_STYLE="z"
 NUM_STEPS=100
 LR=0.005

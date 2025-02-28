@@ -3,7 +3,7 @@
 #SBATCH --partition=cpu-2h
 #SBATCH --ntasks-per-node=2
 #SBATCH --output=logs/job-%x-%j.out
-#SBATCH --chdir=/home/tha/master-thesis-xai/thesis_utils/scripts/imgs
+#SBATCH --chdir=/home/tha/master-thesis-xai/diff_cf_ir/scripts/imgs
 
 # Variables
 SAMPLE_FOLDER="ace_samples"

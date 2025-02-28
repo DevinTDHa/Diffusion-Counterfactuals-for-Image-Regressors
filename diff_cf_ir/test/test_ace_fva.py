@@ -4,8 +4,8 @@ from eval_utils.resnet50_facevgg2_FVA import resnet50, load_state_dict
 import torch
 import numpy as np
 
-from thesis_utils.image_folder_dataset import PairedImageFolderDataset
-from thesis_utils.metrics import AceFVA
+from diff_cf_ir.image_folder_dataset import PairedImageFolderDataset
+from diff_cf_ir.metrics import AceFVA
 
 
 def run_ace_version() -> tuple[dict[str, float], np.ndarray]:
@@ -31,8 +31,8 @@ def run_ace_version() -> tuple[dict[str, float], np.ndarray]:
 
 
 def run_thesis_version() -> tuple[dict[str, float], np.ndarray]:
-    real_folder = "/home/tha/master-thesis-xai/thesis_utils/thesis_utils/test/imgs_fva/celeba-attack/Original/Correct"
-    fake_folder = "/home/tha/master-thesis-xai/thesis_utils/thesis_utils/test/imgs_fva/celeba-attack/Results/celeba-attack/explanation/CC/CCF/CF"
+    real_folder = "/home/tha/master-thesis-xai/diff_cf_ir/diff_cf_ir/test/imgs_fva/celeba-attack/Original/Correct"
+    fake_folder = "/home/tha/master-thesis-xai/diff_cf_ir/diff_cf_ir/test/imgs_fva/celeba-attack/Results/celeba-attack/explanation/CC/CCF/CF"
 
     paired_image_dataset = PairedImageFolderDataset(real_folder, fake_folder, size=224)
 

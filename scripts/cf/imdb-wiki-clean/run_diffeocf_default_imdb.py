@@ -1,10 +1,10 @@
 import os
 from tqdm import tqdm
-from thesis_utils.diffeocf import (
+from diff_cf_ir.diffeocf import (
     DiffeoCF,
 )
 
-from thesis_utils.counterfactuals import (
+from diff_cf_ir.counterfactuals import (
     CFResult,
     save_cf_results,
     update_results_oracle,
@@ -16,9 +16,9 @@ from counterfactuals.generative_models import factory
 from counterfactuals.data import get_data_info
 from counterfactuals.utils import load_checkpoint
 
-from thesis_utils.file_utils import assert_paths_exist, create_result_dir, dump_args
-from thesis_utils.image_folder_dataset import ImageFolderDataset
-from thesis_utils.models import load_resnet
+from diff_cf_ir.file_utils import assert_paths_exist, create_result_dir, dump_args
+from diff_cf_ir.image_folder_dataset import ImageFolderDataset
+from diff_cf_ir.models import load_resnet
 
 
 def init_args():

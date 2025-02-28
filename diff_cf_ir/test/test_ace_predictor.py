@@ -1,8 +1,8 @@
 import csv
 import torch
 
-from thesis_utils.metrics import AceFlipRateYoungOld
-from thesis_utils.image_folder_dataset import ImageFolderDataset
+from diff_cf_ir.metrics import AceFlipRateYoungOld
+from diff_cf_ir.image_folder_dataset import ImageFolderDataset
 
 
 @torch.no_grad()

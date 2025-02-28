@@ -6,7 +6,7 @@
 #SBATCH --output=logs/job-%j.out
 set -x
 
-cd /home/tha/master-thesis-xai/thesis_utils/scripts/train
+cd /home/tha/master-thesis-xai/diff_cf_ir/scripts/train
 
 apptainer run -B /home/space/datasets:/home/space/datasets \
 	-B /home/tha/datasets/squashed/imdb-clean.sqfs:/data:image-src=/ \

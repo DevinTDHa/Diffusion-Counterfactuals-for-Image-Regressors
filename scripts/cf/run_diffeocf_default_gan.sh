@@ -3,7 +3,7 @@
 # Define variables for the arguments
 GMODEL_PATH="/home/tha/diffeo-cf/models/2022_Counterfactuals_pretrained_models/checkpoints/generative_models/CelebA_pGAN.pth"
 GMODEL_TYPE="GAN"
-RMODEL_PATH="/home/tha/master-thesis-xai/thesis_utils/scripts/train/runs_old/imdb_clean_m1-64/version_0/checkpoints/epoch=0099-step=287400-val_loss=1.167e-02.ckpt"
+RMODEL_PATH="/home/tha/master-thesis-xai/diff_cf_ir/scripts/train/runs_old/imdb_clean_m1-64/version_0/checkpoints/epoch=0099-step=287400-val_loss=1.167e-02.ckpt"
 DATASET="CelebA"
 ATTACK_STYLE="z"
 NUM_STEPS=100

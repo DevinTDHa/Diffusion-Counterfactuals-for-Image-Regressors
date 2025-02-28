@@ -38,7 +38,7 @@ def get_full_sbatch_cmd(args: dict):
 #SBATCH --ntasks-per-node=2
 #SBATCH --constraint=80gb
 #SBATCH --output=logs/job-%j-%x.out
-#SBATCH --chdir=/home/tha/master-thesis-xai/thesis_utils/scripts/cf/retinaMNIST
+#SBATCH --chdir=/home/tha/master-thesis-xai/diff_cf_ir/scripts/cf/retinaMNIST
 #SBATCH --signal=SIGUSR1@600
 
 """

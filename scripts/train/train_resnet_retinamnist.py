@@ -1,10 +1,10 @@
-from thesis_utils.file_utils import dump_args
+from diff_cf_ir.file_utils import dump_args
 
 import torch
 
-from thesis_utils.healthcare_datasets import RetinaMNISTDataModule
-from thesis_utils.models import ResNetRegression
-from thesis_utils.train import setup_trainer
+from diff_cf_ir.healthcare_datasets import RetinaMNISTDataModule
+from diff_cf_ir.models import ResNetRegression
+from diff_cf_ir.train import setup_trainer
 import argparse
 
 

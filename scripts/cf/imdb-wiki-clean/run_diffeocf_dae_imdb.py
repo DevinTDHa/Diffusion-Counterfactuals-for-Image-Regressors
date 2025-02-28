@@ -1,11 +1,11 @@
 import os
 from lightning import seed_everything
 from tqdm import tqdm
-from thesis_utils.diffeocf import (
+from diff_cf_ir.diffeocf import (
     DiffeoCF,
 )
 
-from thesis_utils.counterfactuals import (
+from diff_cf_ir.counterfactuals import (
     CFResult,
     save_cf_results,
     update_results_oracle,
@@ -13,15 +13,15 @@ from thesis_utils.counterfactuals import (
 import torch
 import argparse
 
-from thesis_utils.file_utils import (
+from diff_cf_ir.file_utils import (
     assert_paths_exist,
     create_result_dir,
     deterministic_run,
     dump_args,
 )
-from thesis_utils.generators import DAE
-from thesis_utils.image_folder_dataset import ImageFolderDataset, default_transforms
-from thesis_utils.models import load_model, load_resnet
+from diff_cf_ir.generators import DAE
+from diff_cf_ir.image_folder_dataset import ImageFolderDataset, default_transforms
+from diff_cf_ir.models import load_model, load_resnet
 import time
 
 

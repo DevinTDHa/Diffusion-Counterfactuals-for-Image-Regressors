@@ -4,7 +4,7 @@
 #SBATCH --gpus-per-node=1
 #SBATCH --ntasks-per-node=2
 #SBATCH --output=logs/job-%x-%j.out
-#SBATCH --chdir=/home/tha/master-thesis-xai/thesis_utils/scripts/train
+#SBATCH --chdir=/home/tha/master-thesis-xai/diff_cf_ir/scripts/train
 set -x
 
 # FOLDER_PATH=$1
@@ -16,7 +16,7 @@ if [ -z "$FOLDER_PATH" ] || [ -z "$SIZE" ]; then
     exit 1
 fi
 
-PREDICTOR_PATH="/home/tha/master-thesis-xai/thesis_utils/scripts/train/runs/imdb_clean-256/version_0/checkpoints/last.ckpt"
+PREDICTOR_PATH="/home/tha/master-thesis-xai/diff_cf_ir/scripts/train/runs/imdb_clean-256/version_0/checkpoints/last.ckpt"
 
 apptainer run \
     -B /home/space/datasets:/home/space/datasets \

@@ -5,7 +5,7 @@
 #SBATCH --ntasks-per-node=2
 #SBATCH --constraint=80gb
 #SBATCH --output=logs/job-%x-%j.out
-#SBATCH --chdir=/home/tha/master-thesis-xai/thesis_utils/scripts/cf/celebahq
+#SBATCH --chdir=/home/tha/master-thesis-xai/diff_cf_ir/scripts/cf/celebahq
 #SBATCH --signal=SIGUSR1@600
 
 # Define variables for the arguments

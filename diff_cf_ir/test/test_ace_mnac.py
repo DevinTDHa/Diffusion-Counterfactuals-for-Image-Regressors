@@ -2,8 +2,8 @@ import torch
 import numpy as np
 
 from compute_MNAC import compute_MNAC, CelebaHQOracle
-from thesis_utils.image_folder_dataset import PairedImageFolderDataset
-from thesis_utils.metrics import AceMNAC
+from diff_cf_ir.image_folder_dataset import PairedImageFolderDataset
+from diff_cf_ir.metrics import AceMNAC
 
 WEIGHTS_PATH = (
     "/home/tha/ACE/pretrained/oracle/oracle_attribute/celebamaskhq/checkpoint.tar"
@@ -25,8 +25,8 @@ def run_ace_version():
 
 
 def run_thesis_version():
-    real_folder = "/home/tha/master-thesis-xai/thesis_utils/thesis_utils/test/imgs_fva/celeba-attack/Original/Correct"
-    fake_folder = "/home/tha/master-thesis-xai/thesis_utils/thesis_utils/test/imgs_fva/celeba-attack/Results/celeba-attack/explanation/CC/CCF/CF"
+    real_folder = "/home/tha/master-thesis-xai/diff_cf_ir/diff_cf_ir/test/imgs_fva/celeba-attack/Original/Correct"
+    fake_folder = "/home/tha/master-thesis-xai/diff_cf_ir/diff_cf_ir/test/imgs_fva/celeba-attack/Results/celeba-attack/explanation/CC/CCF/CF"
 
     paired_image_dataset = PairedImageFolderDataset(real_folder, fake_folder, size=224)
 

@@ -5,7 +5,7 @@
 #SBATCH --ntasks-per-node=2
 #SBATCH --constraint=80gb
 #SBATCH --output=logs/job-%x-%j.out
-#SBATCH --chdir=/home/tha/master-thesis-xai/thesis_utils/scripts/cf/retinaMNIST
+#SBATCH --chdir=/home/tha/master-thesis-xai/diff_cf_ir/scripts/cf/retinaMNIST
 
 # Define variables for the arguments
 GMODEL_PATH="/home/tha/python_repos/matanat_dae_counterfactual/pretrained/retina128_epoch=9259-step=1250000.ckpt"

@@ -7,8 +7,8 @@ from matplotlib.cm import ScalarMappable
 import matplotlib.pyplot as plt
 import torch
 from tqdm import tqdm
-from thesis_utils.file_utils import save_image
-from thesis_utils.metrics import get_regr_confidence
+from diff_cf_ir.file_utils import save_image
+from diff_cf_ir.metrics import get_regr_confidence
 import numpy as np
 import csv
 

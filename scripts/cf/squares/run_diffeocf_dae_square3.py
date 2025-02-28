@@ -1,30 +1,30 @@
 import torch
 from tqdm import tqdm
-from thesis_utils.diffeocf import (
+from diff_cf_ir.diffeocf import (
     DiffeoCF,
 )
-from thesis_utils.counterfactuals import (
+from diff_cf_ir.counterfactuals import (
     CFResult,
     save_cf_results,
     update_results_true_latents,
 )
-from thesis_utils.file_utils import (
+from diff_cf_ir.file_utils import (
     assert_paths_exist,
     create_result_dir,
     deterministic_run,
     dump_args,
 )
-from thesis_utils.generators import DAE
+from diff_cf_ir.generators import DAE
 import argparse
 
-from thesis_utils.models import load_resnet
-from thesis_utils.squares_dataset import (
+from diff_cf_ir.models import load_resnet
+from diff_cf_ir.squares_dataset import (
     global_counterfactual_visualization_squares,
     SquaresDataset,
     get_experiment_targets,
     inner_square_color,
 )
-from thesis_utils.image_folder_dataset import default_transforms
+from diff_cf_ir.image_folder_dataset import default_transforms
 
 import os
 

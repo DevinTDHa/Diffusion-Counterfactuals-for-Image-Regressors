@@ -13,9 +13,9 @@ from counterfactuals.utils import (
     expl_to_image,
 )
 from counterfactuals.plot import plot_grid_part
-from thesis_utils.counterfactuals import CFResult
-from thesis_utils.file_utils import save_img_threaded
-from thesis_utils.metrics import get_regr_confidence
+from diff_cf_ir.counterfactuals import CFResult
+from diff_cf_ir.file_utils import save_img_threaded
+from diff_cf_ir.metrics import get_regr_confidence
 
 import matplotlib
 

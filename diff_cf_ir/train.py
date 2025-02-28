@@ -1,4 +1,4 @@
-from thesis_utils.file_utils import deterministic_run
+from diff_cf_ir.file_utils import deterministic_run
 from lightning.pytorch.loggers import TensorBoardLogger
 from lightning.pytorch.callbacks import ModelCheckpoint
 

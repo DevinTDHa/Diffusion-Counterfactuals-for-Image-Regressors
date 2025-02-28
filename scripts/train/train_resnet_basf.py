@@ -3,10 +3,10 @@ import argparse
 import torch
 import torchvision.transforms as T
 
-from thesis_utils.basf_dataset import BASFDataModule
-from thesis_utils.file_utils import assert_paths_exist
-from thesis_utils.models import ResNetRegression
-from thesis_utils.train import setup_trainer
+from diff_cf_ir.basf_dataset import BASFDataModule
+from diff_cf_ir.file_utils import assert_paths_exist
+from diff_cf_ir.models import ResNetRegression
+from diff_cf_ir.train import setup_trainer
 
 
 if __name__ == "__main__":
