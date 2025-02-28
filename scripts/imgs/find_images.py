@@ -47,7 +47,9 @@ def main(args):
 
         for i, img_path in enumerate(closest_images):
             img_basename = os.path.basename(img_path)
-            output_path = os.path.join(sample_output_folder, f"match_{i:02d}={img_basename}")
+            output_path = os.path.join(
+                sample_output_folder, f"match_{i:02d}={img_basename}"
+            )
             shutil.copyfile(img_path, output_path)
 
 

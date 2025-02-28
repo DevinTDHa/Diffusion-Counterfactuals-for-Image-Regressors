@@ -4,8 +4,6 @@ import os
 from scripts.metrics.run_metrics import ImageFolderDataset
 
 
-
-
 import numpy as np
 from diff_cf_ir.models import load_resnet
 from diff_cf_ir.file_utils import rename_if_exists

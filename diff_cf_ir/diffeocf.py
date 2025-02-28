@@ -697,7 +697,12 @@ class DiffeoCF:
 
                     confidences = get_regr_confidence(regression_values, stop_ats)
 
-                    self.save_intermediate_img(x_primes, step, y_pred=regression_values, save_mask=[z.requires_grad for z in z_list])
+                    self.save_intermediate_img(
+                        x_primes,
+                        step,
+                        y_pred=regression_values,
+                        save_mask=[z.requires_grad for z in z_list],
+                    )
 
                     # Handle the images that have reached the confidence threshold and update mask
                     steps_needed, done = track_successful_attacks(

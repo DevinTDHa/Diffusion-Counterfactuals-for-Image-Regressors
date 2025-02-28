@@ -267,6 +267,7 @@ def create_cropped_images_like_celebahq(root_path: str, output_path: str):
                 i += 1
 
     print(f"Skipped {skipped} files out of {i + skipped} files. Processing: {i}")
+
     def run_imap_multiprocessing(func, argument_list, num_processes):
         pool = Pool(processes=num_processes)
 
