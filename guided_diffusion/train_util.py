@@ -19,8 +19,8 @@ from .sample_utils import load_from_DDP_model
 
 from tqdm import tqdm
 
-from thesis_utils.debug import setup_usr1_signal_handler, usr1_signal_received
-from thesis_utils.file_utils import save_img_threaded
+from diff_cf_ir.debug import setup_usr1_signal_handler, usr1_signal_received
+from diff_cf_ir.file_utils import save_img_threaded
 
 # For ImageNet experiments, this was a good default value.
 # We found that the lg_loss_scale quickly climbed to
