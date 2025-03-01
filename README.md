@@ -43,3 +43,65 @@ The reproduction code is structured as follows (assumes running from this direct
 5. `6_metrics.sh`: Calculates the metrics for the experiments.
 
 After running the scripts, by default the results will be in `DCFIR_OUTPATH=$PWD/diff_cf_ir_results`.
+
+# Citations
+
+If you find our work useful, we would greatly appreciate it if you consider citing our and the related works:
+
+Our Paper
+
+```
+TODO
+```
+
+A.-K. Dombrowski, J. E. Gerken, K.-R. Müller, and P. Kessel, “Diffeomorphic Counterfactuals With Generative Models,” IEEE Transactions on Pattern Analysis and Machine Intelligence, vol. 46, no. 5, pp. 3257–3274, May 2024, doi: 10.1109/TPAMI.2023.3339980.
+
+```
+@article{dombrowskiDiffeomorphicCounterfactualsGenerative2024,
+  title = {Diffeomorphic {{Counterfactuals With Generative Models}}},
+  author = {Dombrowski, Ann-Kathrin and Gerken, Jan E. and Müller, Klaus-Robert and Kessel, Pan},
+  date = {2024-05},
+  journaltitle = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  volume = {46},
+  number = {5},
+  pages = {3257--3274},
+  issn = {1939-3539},
+  doi = {10.1109/TPAMI.2023.3339980},
+  eventtitle = {{{IEEE Transactions}} on {{Pattern Analysis}} and {{Machine Intelligence}}},
+}
+```
+
+G. Jeanneret, L. Simon, and F. Jurie, “Adversarial Counterfactual Visual Explanations,” in 2023 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), Vancouver, BC, Canada: IEEE, Jun. 2023, pp. 16425–16435. doi: 10.1109/CVPR52729.2023.01576.
+```
+@inproceedings{jeanneretAdversarialCounterfactualVisual2023,
+  title = {Adversarial {{Counterfactual Visual Explanations}}},
+  booktitle = {2023 {{IEEE}}/{{CVF Conference}} on {{Computer Vision}} and {{Pattern Recognition}} ({{CVPR}})},
+  author = {Jeanneret, Guillaume and Simon, Loïc and Jurie, Frédéric},
+  date = {2023-06},
+  pages = {16425--16435},
+  publisher = {IEEE},
+  location = {Vancouver, BC, Canada},
+  doi = {10.1109/CVPR52729.2023.01576},
+  eventtitle = {2023 {{IEEE}}/{{CVF Conference}} on {{Computer Vision}} and {{Pattern Recognition}} ({{CVPR}})},
+  isbn = {979-8-3503-0129-8},
+  langid = {english},
+}
+```
+
+K. Preechakul, N. Chatthee, S. Wizadwongsa, and S. Suwajanakorn, “Diffusion Autoencoders: Toward a Meaningful and Decodable Representation,” in 2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), New Orleans, LA, USA: IEEE, Jun. 2022, pp. 10609–10619. doi: 10.1109/CVPR52688.2022.01036.
+```
+@inproceedings{preechakulDiffusionAutoencodersMeaningful2022,
+  title = {Diffusion {{Autoencoders}}: {{Toward}} a {{Meaningful}} and {{Decodable Representation}}},
+  shorttitle = {Diffusion {{Autoencoders}}},
+  booktitle = {2022 {{IEEE}}/{{CVF Conference}} on {{Computer Vision}} and {{Pattern Recognition}} ({{CVPR}})},
+  author = {Preechakul, Konpat and Chatthee, Nattanat and Wizadwongsa, Suttisak and Suwajanakorn, Supasorn},
+  date = {2022-06},
+  pages = {10609--10619},
+  publisher = {IEEE},
+  location = {New Orleans, LA, USA},
+  doi = {10.1109/CVPR52688.2022.01036},
+  eventtitle = {2022 {{IEEE}}/{{CVF Conference}} on {{Computer Vision}} and {{Pattern Recognition}} ({{CVPR}})},
+  isbn = {978-1-66546-946-3},
+  langid = {english},
+}
+```

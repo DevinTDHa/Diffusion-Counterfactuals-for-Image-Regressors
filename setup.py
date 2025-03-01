@@ -6,5 +6,5 @@ setup(
     packages=find_packages(),
     author='Trung Duc Ha',
     author_email='t.ha@tu-berlin.de',
-    description='Utility module for thesis XAI - Regression'
+    description='Official repo for the paper Diffusion Counterfactuals for Image Regressors'
 )
