@@ -1,6 +1,7 @@
 #!/bin/bash
-if [ -z "$DCFIR_OUTPATH" ]; then
-    echo "DCFIR_OUTPATH is not defined. Please set it manually before running this script."
+set -e
+if [ -z "$DCFIR_OUTPATH" ] || [ -z "$DCFIR_HOME" ]; then
+    echo "DCFIR_OUTPATH or DCFIR_HOME is not defined. Please set it manually before running this script."
     exit 1
 fi
 

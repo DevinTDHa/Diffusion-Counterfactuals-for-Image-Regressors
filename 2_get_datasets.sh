@@ -1,6 +1,7 @@
 #!/bin/bash
-if [ -z "$DCFIR_OUTPATH" ]; then
-    echo "DCFIR_OUTPATH is not defined. Please set it manually before running this script."
+set -e
+if [ -z "$DCFIR_OUTPATH" ] || [ -z "$DCFIR_HOME" ]; then
+    echo "DCFIR_OUTPATH or DCFIR_HOME is not defined. Please set it manually before running this script."
     exit 1
 fi
 
@@ -13,6 +14,9 @@ cd $DATASETS_PATH || exit
 git clone git@github.com:yiminglin-ai/imdb-clean.git
 cd imdb-clean || exit
 bash run_all.sh
+# Create the crop
+cd $DCFIR_HOME || exit
+python diff_cf_ir/imdb_clean_dataset.py $DATASETS_PATH/imdb-clean/imdb-clean-1024 $DATASETS_PATH/imdb-clean/imdb-clean-1024-cropped
 
 # Download the CelebA-HQ dataset
 echo "Downloading the CelebA-HQ dataset..."

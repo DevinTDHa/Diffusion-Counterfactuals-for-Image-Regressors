@@ -1,5 +1,7 @@
 #!/bin/bash
+set -e
 
+export DCFIR_HOME="$PWD"
 export DCFIR_OUTPATH="$PWD/diff_cf_ir_results"
 source setup_pythonpath.sh
 
