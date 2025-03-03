@@ -9,8 +9,10 @@ ACRE_CELEBAHQ_RESULTS="$DCFIR_OUTPATH/ac-re/celebahq"
 DIFFAERE_CELEBAHQ_RESULTS="$DCFIR_OUTPATH/diffae-re/celebahq"
 
 echo "Running metrics for Squares"
-# bash scripts/metrics/scripts/run_metrics_squares_mirror.sh
+bash $DCFIR_HOME/scripts/metrics/scripts/run_metrics_squares_mirror.sh
+# Result in $DCFIR_OUTPATH/metrics/square
 
 echo "Running metrics CelebaHQ..."
-bash scripts/metrics/scripts/run_folders.sh $ACRE_CELEBAHQ_RESULTS
+bash $DCFIR_HOME/scripts/metrics/scripts/run_folders.sh $ACRE_CELEBAHQ_RESULTS
 bash scripts/metrics/scripts/run_folders.sh $DIFFAERE_CELEBAHQ_RESULTS
+# Result in $DCFIR_OUTPATH/metrics/celebahq
