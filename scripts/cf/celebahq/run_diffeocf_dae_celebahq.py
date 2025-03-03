@@ -179,7 +179,9 @@ if __name__ == "__main__":
     dump_args(args, args.result_dir)
 
     compose = default_transforms(size, ddpm=True)
-    PARTITION_FILE = "/home/space/datasets/celeba/list_eval_partition.txt"
+    PARTITION_FILE = os.path.join(
+        os.environ["DCFIR_OUTPATH"], "datasets/CelebAMask-HQ/list_eval_partition.txt"
+    )
     dataset = CelebAHQDataset(
         root=args.image_folder,
         transform=compose,

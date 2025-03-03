@@ -56,17 +56,12 @@ DIST_L1=${3:-0.0} # Dist does not work well, no real results if enabled
 DIST_L2=${4:-0.0}
 RMODEL_PATH=${5:-"/home/tha/thesis_runs/regressor/imdb_wiki_densenet_linear_only-256/version_0/checkpoints/last.ckpt"}
 RORACLE_PATH="/home/tha/thesis_runs/regressor/imdb_wiki_densenet_fullft-256/version_0/checkpoints/last.ckpt"
-if [[ "$RMODEL_PATH" == *"linear_only"* ]]; then
-    LINEAR_ONLY=1
-else
-    LINEAR_ONLY=0
-fi
 
 NUM_SAMPLES=3000
 MAX_STEPS=200
 BATCH_SIZE=8
 
-NAME="CelebaHQ_FR-method=${ATTACK_METHOD}-step=${ATACK_STEP}-dist_l1=${DIST_L1}-dist_l2=${DIST_L2}-rmodel_linear=${LINEAR_ONLY}"
+NAME="CelebaHQ_FR-method=${ATTACK_METHOD}-step=${ATACK_STEP}-dist_l1=${DIST_L1}-dist_l2=${DIST_L2}"
 OUTPUT_PATH="/home/tha/thesis_runs/ace/celebahq/$NAME"
 
 echo "Runnning $NAME"

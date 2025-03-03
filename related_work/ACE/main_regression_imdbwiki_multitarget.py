@@ -29,6 +29,7 @@ from diff_cf_ir.counterfactuals import (
     CFResult,
     save_cf_results,
     update_results_oracle,
+    generate_collage_multitarget,
 )
 from diff_cf_ir.file_utils import (
     assert_paths_exist,
@@ -37,8 +38,7 @@ from diff_cf_ir.file_utils import (
     dump_args,
     save_img_threaded,
 )
-from diff_cf_ir.image_folder_dataset import default_transforms
-from diff_cf_ir.celebahq_dataset import CelebAHQDataset
+from diff_cf_ir.image_folder_dataset import default_transforms, ImageFolderDataset
 from diff_cf_ir.models import load_model as load_thesis_model
 
 
@@ -52,7 +52,6 @@ from diff_cf_ir.models import load_model as load_thesis_model
 def create_args():
     defaults = dict(
         clip_denoised=True,  # Clipping noise
-        batch_size=4,  # Batch size
         gpu="0",  # GPU index, should only be 1 gpu
         save_images=False,  # Saving all images
         num_samples=2000,  # useful to sample few examples
@@ -234,23 +233,34 @@ def load_model(args):
 
 
 def get_data(args):
-    compose = default_transforms(args.image_size)
-    PARTITION_FILE = os.path.join(
-        os.environ["DCFIR_OUTPATH"], "datasets/CelebAMask-HQ/list_eval_partition.txt"
-    )
-    dataset = CelebAHQDataset(
-        root=args.image_folder,
+    def load_meta(meta_path: str):
+        meta = {}
+        with open(meta_path) as f:
+            for line in f.readlines():
+                if "," not in line:
+                    continue
+                filename, age = line.strip().split(",")
+                meta[filename] = float(age) / 100
+
+        return meta
+
+    size = 256
+    compose = default_transforms(size)
+    dataset = ImageFolderDataset(
+        folder=args.image_folder,
+        size=size,
         transform=compose,
-        get_mode="cf",
-        partition_file=PARTITION_FILE,
     )
+
     num_samples = (
         len(dataset)
         if args.num_samples is None
         else min(args.num_samples, len(dataset))
     )
     dataset = torch.utils.data.Subset(dataset, range(num_samples))
-    return dataset
+
+    meta = load_meta(os.path.join(args.image_folder, "data.csv"))
+    return dataset, meta
 
 
 def load_models_and_attack(args):
@@ -355,6 +365,23 @@ def get_dist_fn(args):
     return dist_fn
 
 
+def get_batch_multitarget(dataset, i: int):
+    targets = [0.1, 0.2, 0.4, 0.6, 0.8]
+
+    f, x = dataset[i]
+
+    def target_str(t: float):
+        return f"{t*100}"
+
+    fs = [
+        f"{os.path.splitext(os.path.basename(f))[0]}_t={target_str(target)}.png"
+        for target in targets
+    ]
+    xs = torch.broadcast_to(x, (len(targets), *x.shape))
+    targets = torch.Tensor(targets).view(-1, 1)
+    return f, fs, xs, targets
+
+
 def main() -> None:
     args = create_args()
 
@@ -376,15 +403,7 @@ def main() -> None:
     )
     respaced_steps = int(args.sampling_time_fraction * int(args.timestep_respacing))
 
-    dataset = get_data(args)
-
-    dataloader = DataLoader(
-        dataset,
-        batch_size=args.batch_size,
-        shuffle=False,
-        num_workers=4,
-        pin_memory=True,
-    )
+    dataset, meta = get_data(args)
 
     diffeocf_results: list[CFResult] = []
 
@@ -396,17 +415,18 @@ def main() -> None:
     os.makedirs(noise_path, exist_ok=True)
     os.makedirs(mask_path, exist_ok=True)
 
-    with tqdm(dataloader, desc="Running ACE") as pbar:
-        for f, x, targets in pbar:
-            # x = x.unsqueeze(0).to(dist_util.dev())
+    with tqdm(range(len(dataset)), desc="Running ACE") as pbar:
+        for i in pbar:
+            real_name, fs, x, targets = get_batch_multitarget(dataset, i)
             x = x.to(dist_util.dev())
             targets = targets.to(dist_util.dev()).view(-1, 1)
             x_reconstructed, y_initial = joint_classifier.initial(x)
 
-            pbar.set_postfix_str(f"Processing: {f}")
+            fs_basenames = [os.path.basename(f) for f in fs]
+            pbar.set_postfix_str(f"Processing: {fs_basenames}")
 
             # Hack for intermediate images
-            image_names = [f.split("/")[-1].split(".")[0] for f in f]
+            image_names = [f.split("/")[-1].split(".")[0] for f in fs]
             attack.current_image = image_names
             # sample image from the noisy_img
             # DHA: 1. Extract grads with JointClassifierDDPM.forward and perform PGD
@@ -430,7 +450,7 @@ def main() -> None:
 
                 for j in range(x.size(0)):
                     cf_result = CFResult(
-                        image_path=f[j],
+                        image_path=fs[j],
                         x=x[j].unsqueeze(0),
                         x_reconstructed=x_reconstructed[j].unsqueeze(0),
                         x_prime=x_prime[j].unsqueeze(0),
@@ -440,15 +460,18 @@ def main() -> None:
                         success=success[j],
                         steps=steps_done[j],
                     )
+                    y_true = meta[os.path.basename(real_name)]
+                    cf_result.update_y_true_initial(y_true)
+
                     diffeocf_results.append(cf_result)
 
-                    save_img_threaded(pe[j], osp.join(pe_path, cf_result.image_name))
-                    save_img_threaded(
-                        noise[j], osp.join(noise_path, cf_result.image_name)
-                    )
-                    save_img_threaded(
-                        pe_mask[j], osp.join(mask_path, cf_result.image_name)
-                    )
+                    # save_img_threaded(pe[j], osp.join(pe_path, cf_result.image_name))
+                    # save_img_threaded(
+                    #     noise[j], osp.join(noise_path, cf_result.image_name)
+                    # )
+                    # save_img_threaded(
+                    #     pe_mask[j], osp.join(mask_path, cf_result.image_name)
+                    # )
 
     # Save the results for the diffeo_cf attacks
     del model
@@ -457,6 +480,12 @@ def main() -> None:
     update_results_oracle(oracle, diffeocf_results, args.confidence_threshold)
 
     save_cf_results(diffeocf_results, args.output_path)
+
+    num_targets = len(targets)
+    num_batches = len(diffeocf_results) // num_targets
+    for b_i in range(num_batches):
+        cur_results = diffeocf_results[b_i * num_targets : (b_i + 1) * num_targets]
+        generate_collage_multitarget(args.output_path, cur_results)
 
 
 if __name__ == "__main__":

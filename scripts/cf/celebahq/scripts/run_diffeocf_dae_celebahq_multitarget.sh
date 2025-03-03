@@ -26,20 +26,15 @@ BACKWARD_T=${2:-10}
 DIST=${3:-"l1=1e-5"}
 DIST_TYPE=${4:-latent}
 OPTIMIZER=${5:-adam}
-RMODEL_PATH=${6:-"$DCFIR_OUTPATH/models/regressors/celebahq/version_0/checkpoints/last.ckpt"}
-RORACLE_PATH="$DCFIR_OUTPATH/models/regressors/celebahq_oracle/version_0/checkpoints/last.ckpt"
+RMODEL_PATH=${6:-"$DCFIR_OUTPATH/regressors/imdb-clean/version_0/checkpoints/last.ckpt"}
+RORACLE_PATH="$DCFIR_OUTPATH/regressors/imdb-clean_oracle/version_0/checkpoints/last.ckpt"
 OUTPUT_PATH="$DCFIR_OUTPATH/diffae-re/multitarget"
-if [[ "$RMODEL_PATH" == *"linear_only"* ]]; then
-    LINEAR_ONLY=1
-else
-    LINEAR_ONLY=0
-fi
 
 echo "Running with the following parameters:"
-echo "LR=$LR, BACKWARD_T=$BACKWARD_T, DIST=$DIST, DIST_TYPE=$DIST_TYPE, OPTIMIZER=$OPTIMIZER, LINEAR_ONLY=$LINEAR_ONLY"
+echo "LR=$LR, BACKWARD_T=$BACKWARD_T, DIST=$DIST, DIST_TYPE=$DIST_TYPE, OPTIMIZER=$OPTIMIZER"
 
 IMAGE_FOLDER="datasets/sample"
-NAME="multitarget-lr=$LR-bt=$BACKWARD_T-dist=$DIST-dist_type=$DIST_TYPE-opt=$OPTIMIZER-linear_only=$LINEAR_ONLY"
+NAME="multitarget-lr=$LR-bt=$BACKWARD_T-dist=$DIST-dist_type=$DIST_TYPE-opt=$OPTIMIZER"
 RESULT_DIR="$OUTPUT_PATH/$NAME"
 
 # Run the Python script with the arguments. It will terminate early if SIGUSR1 is received.

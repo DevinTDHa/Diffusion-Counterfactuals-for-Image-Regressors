@@ -6,7 +6,7 @@ fi
 
 MODEL_FLAGS="--attention_resolutions 32,16,8 --class_cond False --diffusion_steps 1000 --learn_sigma True --noise_schedule linear --num_channels 128 --num_heads 4 --num_res_blocks 2 --resblock_updown True --use_fp16 True --use_scale_shift_norm True"
 MODEL_PATH="$DCFIR_OUTPATH/models/square_ace_ddpm/last.pt"
-RMODEL_PATH="$DCFIR_OUTPATH/models/regressors/square/version_0/checkpoints/last.ckpt"
+RMODEL_PATH="$DCFIR_OUTPATH/regressors/square/version_0/checkpoints/last.ckpt"
 CONFIDENCE_THRESHOLD="0.05"
 IMAGE_SIZE="64"
 ATACK_STEP=2.0

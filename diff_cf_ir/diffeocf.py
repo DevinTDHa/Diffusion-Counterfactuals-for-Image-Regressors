@@ -2,19 +2,12 @@ import os
 from typing import Union
 import torchvision
 from tqdm import tqdm
-from matplotlib import pyplot as plt
 
 import torch
 import torch.nn as nn
 from torch.optim.optimizer import Optimizer
 
-from counterfactuals.utils import (
-    torch_to_image,
-    expl_to_image,
-)
-from counterfactuals.plot import plot_grid_part
 from diff_cf_ir.counterfactuals import CFResult
-from diff_cf_ir.file_utils import save_img_threaded
 from diff_cf_ir.metrics import get_regr_confidence
 
 import matplotlib
@@ -152,17 +145,6 @@ class DiffeoCF:
         # save results
         cmap_img = "jet" if self.data_shape[0] == 3 else "gray"
 
-        # calculate heatmap as difference dx between original and adversarial/counterfactual
-        # if self.do_create_heatmaps:
-        #     self.create_heatmap(
-        #         attack_style,
-        #         x_org,
-        #         z_org,
-        #         x_prime,
-        #         image_name,
-        #         cmap_img,
-        #     )
-
         return CFResult(
             image_path=image_path,
             x=x.detach().cpu(),
@@ -248,46 +230,11 @@ class DiffeoCF:
             steps=step,
         )
 
-    def create_heatmap(
-        self,
-        attack_style,
-        x_org,
-        z_org,
-        x_prime,
-        image_name,
-        cmap_img,
-    ):
-        heatmap = torch.abs(x_org - x_prime).sum(dim=0).sum(dim=0)
-
-        all_images = [torch_to_image(x_org)]
-        titles = ["x", "x'", "delta x"]
-        cmaps = [cmap_img, cmap_img, "bwr"]
-
-        if attack_style == "z":
-            all_images.append(torch_to_image(self.gmodel.decode(z_org)))
-            titles = ["x", "g(g^{-1}(x))", "x'", "delta x"]
-
-            cmaps = [cmap_img, cmap_img, cmap_img, "bwr"]
-
-        all_images.append(torch_to_image(x_prime))
-        all_images.append(expl_to_image(heatmap))
-
-        _ = plot_grid_part(all_images, titles=titles, images_per_row=4, cmap=cmaps)
-        plt.subplots_adjust(
-            wspace=0.03, hspace=0.01, left=0.03, right=0.97, bottom=0.01, top=0.95
-        )
-
-        heatmaps_path = os.path.join(self.result_dir, "heatmaps")
-        os.makedirs(heatmaps_path, exist_ok=True)
-        plt.savefig(
-            os.path.join(heatmaps_path, f"{image_name}.png"),
-        )
-        plt.close()
-
     def save_intermediate_img(self, x, n_iter, y_pred, save_mask: list[bool] = []):
         """
         Saves intermediate images for the attack
         """
+        return
         # Temporarily disable
         # if len(x.shape) == 3:
         #     img_idx_path = os.path.join(self.steps_dir, self.current_image)

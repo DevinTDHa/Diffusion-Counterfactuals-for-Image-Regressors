@@ -5,9 +5,9 @@ if [ -z "$DCFIR_OUTPATH" ] || [ -z "$DCFIR_HOME" ]; then
 fi
 
 MODEL_FLAGS="--attention_resolutions 32,16,8 --class_cond False --diffusion_steps 500 --learn_sigma True --noise_schedule linear --num_channels 128 --num_head_channels 64 --num_res_blocks 2 --resblock_updown True --use_fp16 True --use_scale_shift_norm True"
-MODEL_PATH="pretrained_models/ace/celebahq-ddpm.pt"
+MODEL_PATH="$DCFIR_HOME/pretrained_models/ace/celebahq-ddpm.pt"
 CONFIDENCE_THRESHOLD="0.05"
-IMAGE_FOLDER="datasets/CelebAMask-HQ"
+IMAGE_FOLDER="$DCFIR_HOME/datasets/CelebAMask-HQ"
 IMAGE_SIZE="256"
 
 # Attack parameters
@@ -20,19 +20,14 @@ ATTACK_METHOD=${1:-PGD}
 ATACK_STEP=${2:-1.0}
 DIST_L1=${3:-0.0} # Dist does not work well, no real results if enabled
 DIST_L2=${4:-0.0}
-RMODEL_PATH=${5:-"$DCFIR_OUTPATH/models/regressors/celebahq/version_0/checkpoints/last.ckpt"}
-RORACLE_PATH="$DCFIR_OUTPATH/models/regressors/celebahq_oracle/version_0/checkpoints/last.ckpt"
-if [[ "$RMODEL_PATH" == *"linear_only"* ]]; then
-    LINEAR_ONLY=1
-else
-    LINEAR_ONLY=0
-fi
+RMODEL_PATH=${5:-"$DCFIR_OUTPATH/regressors/imdb-clean/version_0/checkpoints/last.ckpt"}
+RORACLE_PATH="$DCFIR_OUTPATH/regressors/imdb-clean_oracle/version_0/checkpoints/last.ckpt"
 
 NUM_SAMPLES=3000
 MAX_STEPS=200
 BATCH_SIZE=8
 
-NAME="CelebaHQ_val-method=${ATTACK_METHOD}-step=${ATACK_STEP}-dist_l1=${DIST_L1}-dist_l2=${DIST_L2}-rmodel_linear=${LINEAR_ONLY}"
+NAME="CelebaHQ_val-method=${ATTACK_METHOD}-step=${ATACK_STEP}-dist_l1=${DIST_L1}-dist_l2=${DIST_L2}"
 OUTPUT_PATH="$DCFIR_OUTPATH/ac-re/celebahq/$NAME"
 
 echo "Runnning $NAME"

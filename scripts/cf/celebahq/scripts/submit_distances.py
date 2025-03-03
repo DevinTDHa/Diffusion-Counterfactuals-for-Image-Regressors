@@ -26,8 +26,7 @@ def construct_args(dist, dist_type):
 
     name = (
         f"CelebaHQ_FR-lr={args['lr']}-bt={args['backward_t']}-dist={args['dist']}+"
-        f"{args['dist_type']}-opt={args['optimizer']}-"
-        f"linear_only={1 if 'linear_only' in args['rmodel_path'] else 0}"
+        f"{args['dist_type']}-opt={args['optimizer']}"
     )
     args["result_dir"] = f"/home/tha/thesis_runs/cf/celebahq/dists/{name}"
 

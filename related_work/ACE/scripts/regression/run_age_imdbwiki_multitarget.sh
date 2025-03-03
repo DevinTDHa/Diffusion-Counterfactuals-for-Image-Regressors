@@ -27,11 +27,11 @@ NUM_SAMPLES=100
 MAX_STEPS=200
 
 NAME="multitarget-method=${ATTACK_METHOD}-step=${ATACK_STEP}-dist_l1=${DIST_L1}-dist_l2=${DIST_L2}"
-OUTPUT_PATH="/home/tha/thesis_runs/ace/multitarget/$NAME"
+OUTPUT_PATH="$DCFIR_OUTPATH/ac-re/multitarget/$NAME"
 
 echo "Runnning $NAME"
 # Run the Python script with the arguments
-python main_regression_celebahq_multitarget.py $MODEL_FLAGS \
+python main_regression_imdbwiki_multitarget.py $MODEL_FLAGS \
     --model_path=$MODEL_PATH \
     --rmodel_path=$RMODEL_PATH \
     --roracle_path=$RORACLE_PATH \

@@ -5,7 +5,7 @@ if [ -z "$DCFIR_OUTPATH" ] || [ -z "$DCFIR_HOME" ]; then
 fi
 
 GMODEL_PATH="$DCFIR_OUTPATH/models/square_diffae/square64_ddim/last.ckpt"
-RMODEL_PATH="$DCFIR_OUTPATH/models/regressors/square/version_0/checkpoints/last.ckpt"
+RMODEL_PATH="$DCFIR_OUTPATH/regressors/square/version_0/checkpoints/last.ckpt"
 NUM_STEPS=200
 BATCH_SIZE=38
 LR=0.002
@@ -15,7 +15,9 @@ BACKWARD_T=10
 
 IMG_FOLDER="$DCFIR_OUTPATH/datasets/square_val/squares_lower/"
 RESULT_DIR="$DCFIR_OUTPATH/diffae-re/square_mirror_lower"
-python run_diffeocf_dae_square.py \
+mkdir -p logs
+
+python $DCFIR_HOME/scripts/cf/squares/run_diffeocf_dae_square.py \
     --gmodel_path $GMODEL_PATH \
     --rmodel_path $RMODEL_PATH \
     --backward_t $BACKWARD_T \
@@ -25,11 +27,10 @@ python run_diffeocf_dae_square.py \
     --confidence_threshold $CONFIDENCE_THRESHOLD \
     --image_folder $IMG_FOLDER \
     --result_dir $RESULT_DIR \
-    >logs/square_mirror_lower_dae.log 2>&1 &
 
 IMG_FOLDER="$DCFIR_OUTPATH/datasets/square_val/squares_upper/"
 RESULT_DIR="$DCFIR_OUTPATH/diffae-re/square_mirror_upper"
-python run_diffeocf_dae_square.py \
+python $DCFIR_HOME/scripts/cf/squares/run_diffeocf_dae_square.py \
     --gmodel_path $GMODEL_PATH \
     --rmodel_path $RMODEL_PATH \
     --backward_t $BACKWARD_T \
@@ -39,6 +40,4 @@ python run_diffeocf_dae_square.py \
     --confidence_threshold $CONFIDENCE_THRESHOLD \
     --image_folder $IMG_FOLDER \
     --result_dir $RESULT_DIR \
-    >logs/square_mirror_upper_dae.log 2>&1 &
 
-wait

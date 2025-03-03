@@ -5,7 +5,7 @@ if [ -z "$DCFIR_OUTPATH" ] || [ -z "$DCFIR_HOME" ]; then
 fi
 
 # Define variables for the arguments
-GMODEL_PATH="pretrained/diffae/last.ckpt"
+GMODEL_PATH="$DCFIR_HOME/pretrained_models/diffae/last.ckpt"
 
 # Algorithm params
 NUM_STEPS=200
@@ -27,24 +27,19 @@ BACKWARD_T=${2:-10}
 DIST=${3:-none}
 DIST_TYPE=${4:-latent}
 OPTIMIZER=${5:-adam}
-RMODEL_PATH=${6:-"$DCFIR_OUTPATH/models/regressors/celebahq/version_0/checkpoints/last.ckpt"}
-RORACLE_PATH="$DCFIR_OUTPATH/models/regressors/celebahq_oracle/version_0/checkpoints/last.ckpt"
+RMODEL_PATH=${6:-"$DCFIR_OUTPATH/regressors/imdb-clean/version_0/checkpoints/last.ckpt"}
+RORACLE_PATH="$DCFIR_OUTPATH/regressors/imdb-clean_oracle/version_0/checkpoints/last.ckpt"
 OUTPUT_PATH="$DCFIR_OUTPATH/diffae-re/celebahq"
-if [[ "$RMODEL_PATH" == *"linear_only"* ]]; then
-    LINEAR_ONLY=1
-else
-    LINEAR_ONLY=0
-fi
 
 echo "Running with the following parameters:"
-echo "LR=$LR, BACKWARD_T=$BACKWARD_T, DIST=$DIST, DIST_TYPE=$DIST_TYPE, OPTIMIZER=$OPTIMIZER, LINEAR_ONLY=$LINEAR_ONLY"
+echo "LR=$LR, BACKWARD_T=$BACKWARD_T, DIST=$DIST, DIST_TYPE=$DIST_TYPE, OPTIMIZER=$OPTIMIZER"
 
 IMAGE_FOLDER="$DCFIR_OUTPATH/datasets/CelebAMask-HQ"
-NAME="CelebaHQ_lr=$LR-bt=$BACKWARD_T-dist=$DIST-dist_type=$DIST_TYPE-opt=$OPTIMIZER-linear_only=$LINEAR_ONLY"
+NAME="CelebaHQ_lr=$LR-bt=$BACKWARD_T-dist=$DIST-dist_type=$DIST_TYPE-opt=$OPTIMIZER"
 RESULT_DIR="$OUTPUT_PATH/$NAME"
 
 # Run the Python script with the arguments. It will terminate early if SIGUSR1 is received.
-python run_diffeocf_dae_celebahq.py \
+python $DCFIR_HOME/scripts/cf/celebahq/run_diffeocf_dae_celebahq.py \
     --gmodel_path=$GMODEL_PATH \
     --rmodel_path=$RMODEL_PATH \
     --roracle_path=$RORACLE_PATH \
