@@ -100,7 +100,6 @@ def compute_MNAC(oracle,
                              num_workers=4, pin_memory=True)
 
     for cl, cf in tqdm(loader):
-        breakpoint()
         d_cl = oracle(cl.to(device, dtype=torch.float))
         d_cf = oracle(cf.to(device, dtype=torch.float))
         MNACS.append(((d_cl > 0.5) != (d_cf > 0.5)).sum(dim=1).cpu().numpy())

@@ -13,8 +13,8 @@ import torch
 import matplotlib.pyplot as plt
 from templates import *
 from torch.nn import functional as F
-from thesis_utils.models import load_model
-from thesis_utils.file_utils import save_img_threaded
+from diff_cf_ir.models import load_model
+from diff_cf_ir.file_utils import save_img_threaded
 from counterfactuals.utils import (
     make_dir,
     torch_to_image,

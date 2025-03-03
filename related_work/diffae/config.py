@@ -23,10 +23,12 @@ import os
 from dataset_util import *
 from torch.utils.data.distributed import DistributedSampler
 
-from thesis_utils.basf_dataset import BASFDataset
-from thesis_utils.squares_dataset import SquaresDataset
+from diff_cf_ir.squares_dataset import SquaresDataset
 import os
 
+
+if "DCFIR_OUTPATH" not in os.environ:
+    raise ValueError("DCFIR_OUTPATH not set in the environment")
 
 data_paths = {
     "ffhqlmdb256": os.path.expanduser("datasets/ffhq256.lmdb"),
@@ -42,7 +44,7 @@ data_paths = {
         "datasets/celeba_anno/CelebAMask-HQ-attribute-anno.txt"
     ),
     "celeba_relight": os.path.expanduser("datasets/celeba_hq_light/celeba_light.txt"),
-    "square64": os.environ["DCFIR_OUTPATH"] + "/square",
+    "square64": os.path.join(os.environ["DCFIR_OUTPATH"], "datasets", "square"),
 }
 
 
@@ -310,24 +312,6 @@ class TrainConfig(BaseConfig):
                 crop_d2c=True,
                 **kwargs,
             )
-        elif self.data_name == "basf512":
-            # Construct transforms for DDPM
-            transform = [
-                transforms.RandomHorizontalFlip(),
-                transforms.RandomVerticalFlip(),
-                transforms.RandomRotation(360),
-                transforms.Resize(self.img_size),
-                transforms.ToTensor(),
-                transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
-            ]
-
-            transform = transforms.Compose(transform)
-            return BASFDataset(
-                root_dir=path or self.data_path,
-                dataset_name="combined",
-                transform=transform,
-                get_mode="dae"
-            )
         elif self.data_name == "square64":
             # Construct transforms for DDPM
             transform = [
@@ -340,9 +324,7 @@ class TrainConfig(BaseConfig):
 
             transform = transforms.Compose(transform)
             return SquaresDataset(
-                root=path or self.data_path,
-                transform=transform,
-                get_mode="dae"
+                root=path or self.data_path, transform=transform, get_mode="dae"
             )
         else:
             raise NotImplementedError()

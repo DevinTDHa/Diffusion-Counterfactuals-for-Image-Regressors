@@ -109,30 +109,6 @@ def ffhq256_autoenc_latent():
     return conf
 
 
-def basf512_autoenc_latent():
-    conf = pretrain_basf512_autoenc()
-    conf = latent_diffusion128_config(conf)  # Batch Size 128
-    conf = latent_mlp_2048_norm_10layers(conf)
-    conf = latent_256_batch_size(conf)  # Batch Size 256
-    conf = adamw_weight_decay(conf)
-
-    conf.batch_size = 8
-    conf.batch_size_eval = 8
-
-    num_images = 2859  # basf dataset has 2860 imagese
-
-    conf.total_samples = num_images * 1000  # 1000 epochs
-    conf.latent_loss_type = LossType.l1
-    conf.latent_beta_scheduler = "const0.008"
-    conf.eval_ema_every_samples = num_images * 10
-    conf.eval_every_samples = num_images * 10
-    conf.sample_every_samples = num_images * 10
-    conf.save_every_samples = num_images * 10
-    
-    conf.name = "basf512_autoenc_latent"
-    return conf
-
-
 def horse128_autoenc_latent():
     conf = pretrain_horse128()
     conf = latent_diffusion128_config(conf)
@@ -173,8 +149,8 @@ def celeba64d2c_autoenc_latent():
     return conf
 
 
-def square64_autoenc_latent():
-    conf = pretrain_square64()
+def square64_autoenc_latent(base_dir: str = ""):
+    conf = pretrain_square64(base_dir)
     conf = latent_diffusion_config(conf)
     conf = latent_512_batch_size(conf)
     conf = latent_mlp_2048_norm_10layers(conf)

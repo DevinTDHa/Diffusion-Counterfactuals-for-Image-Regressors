@@ -4,6 +4,7 @@ if [ -z "$DCFIR_OUTPATH" ] || [ -z "$DCFIR_HOME" ]; then
     echo "DCFIR_OUTPATH or DCFIR_HOME is not defined. Please set it manually before running this script."
     exit 1
 fi
+set -x
 
 DATASETS_PATH=$DCFIR_OUTPATH/datasets
 mkdir -p $DATASETS_PATH

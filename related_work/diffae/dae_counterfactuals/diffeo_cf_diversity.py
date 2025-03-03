@@ -12,8 +12,8 @@ from dae_counterfactuals.models import DAEModel
 import argparse
 import torch
 from templates import *
-from thesis_utils.models import load_model
-from thesis_utils.file_utils import save_img_threaded, rename_if_exists
+from diff_cf_ir.models import load_model
+from diff_cf_ir.file_utils import save_img_threaded, rename_if_exists
 from counterfactuals.utils import (
     make_dir,
 )

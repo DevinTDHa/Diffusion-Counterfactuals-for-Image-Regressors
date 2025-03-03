@@ -64,7 +64,7 @@ class SquaresDataset(VisionDataset):
 
         if self.get_mode == "dae":  # Diffusion Autoencoder
             return {"img": img, "index": index, "labels": label}
-        elif self.get_mode == "square":
+        elif self.get_mode == "ace":
             return img, {}
         elif self.mask_mode:
             mask_path = os.path.join(self.root, self.masks_folder, base_name)

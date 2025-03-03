@@ -47,7 +47,9 @@ class LitModel(L.LightningModule):
             model_size += param.data.nelement()
         print("Model params: %.2f M" % (model_size / 1024 / 1024))
 
-        self.sampler: SpacedDiffusionBeatGans = conf.make_diffusion_conf().make_sampler()
+        self.sampler: SpacedDiffusionBeatGans = (
+            conf.make_diffusion_conf().make_sampler()
+        )
         self.eval_sampler = conf.make_eval_diffusion_conf().make_sampler()
 
         # this is shared for both model and latent
@@ -706,8 +708,7 @@ class LitModel(L.LightningModule):
             if "infer" in self.conf.eval_programs:
                 print("infer ...")
                 conds = self.infer_whole_dataset().float()
-                # NOTE: always use this path for the latent.pkl files
-                save_path = f"checkpoints/{self.conf.name}/latent.pkl"
+                save_path = os.path.join(self.conf.logdir, "latent.pkl")
             else:
                 raise NotImplementedError()
 

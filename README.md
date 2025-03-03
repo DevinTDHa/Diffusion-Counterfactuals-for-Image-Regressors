@@ -15,11 +15,8 @@ We used the following models:
     - For the classifier, download `checkpoints_decision_densenet.tar.gz`
     - For the MNAC classifier, download `checkpoints_oracle_attribute.tar.gz `
 - For the FVA classifier, download `resnet50_ft` from [VGGFace2](https://github.com/cydonia999/VGGFace2-pytorch)
-- Our Models (Skip these if reproducing from scratch)
-    - Square dataset regression model: TODO
-    - imdb-wiki-clean regression model
-        - Regressor: TODO
-        - Oracle: TODO
+- Our Models (Skip these if reproducing from scratch), namely the Square generators and regression models (square and imdb-wiki-clean) 
+    - https://tubcloud.tu-berlin.de/s/5qMJAkXPtiW6ozg
 
 ## Complete Reproduction
 
@@ -35,7 +32,7 @@ The reproduction code is structured as follows (assumes running from this direct
 
 1. `1_reproduce_all.sh`: Runs all the other reproduction scripts below.
     - By default, will use the current directory to store all the files and outputs. You can change the destinations by changing the `DCFIR_OUTPATH` variables in the script.
-    - if manually running the scripts, you need to set `DCFIR_OUTPATH` and `DCFIR_HOME` manually and run [`setup_pythonpath.sh`](/setup_pythonpath.sh) to setup the necessary modules
+    - if manually running the scripts, you need to set `DCFIR_OUTPATH` and `DCFIR_HOME` manually and  [`source setup_pythonpath.sh`](/setup_pythonpath.sh) to setup the necessary modules
 2. `2_get_datasets.sh`: Downloads all the relevant datasets (imdb-wiki-clean, CelebA-HQ, Square).
 3. `3_train_square_generators.sh`: Trains the ACE DDPM and Diff-AE for the Square dataset.
 4. `4_train_regressors.sh`: Trains the regression and oracle models.

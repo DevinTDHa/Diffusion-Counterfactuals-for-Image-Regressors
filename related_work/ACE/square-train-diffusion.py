@@ -34,7 +34,7 @@ def main():
 
     logger.log("creating retinaMNIST loader...")
 
-    dataset = SquaresDataset(root=args.data_dir, mode="ace")
+    dataset = SquaresDataset(root=args.data_dir, get_mode="ace")
 
     def infinite_iterator():
         dataloader = DataLoader(
@@ -65,7 +65,7 @@ def main():
     ).run_loop()
 
 
-def create_argparser(output_path: str):
+def create_argparser():
     defaults = dict(
         schedule_sampler="uniform",
         lr=1e-4,
@@ -79,7 +79,6 @@ def create_argparser(output_path: str):
         resume_checkpoint="",
         use_fp16=False,
         fp16_scale_growth=1e-3,
-        output_path=output_path,
         gpus="",
         use_hdf5=False,
         use_celeba_HQ=False,
