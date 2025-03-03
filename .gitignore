@@ -190,3 +190,7 @@ real*
 
 *tmp*.py
 tmp_*
+
+# Pretrained models
+*.tar*
+*.ckpt
