@@ -422,6 +422,7 @@ class LowerUpperSquareDatasetGenerator:
         return img_mask
 
     def verify_mask(self, x, mask, color):
+        pass
         # x = np.array(x)
         # mask = np.array(mask).astype(bool)
         # mask[:, :, [1, 2]] = False  # Only select red channel

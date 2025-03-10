@@ -31,6 +31,6 @@ gdown 0B7EVK8r0v71pblRyaVFSWGxPY0U
 
 # Generate the square dataset
 echo "Generating the square dataset..."
-cd $DCFIR_OUTPATH || exit
-python diff_cf_ir/generate_squares.py $DATASETS_PATH/square
-python diff_cf_ir/generate_squares.py $DATASETS_PATH/square_val --split val
+cd $DCFIR_HOME || exit
+python $DCFIR_HOME/diff_cf_ir/generate_squares.py $DATASETS_PATH/square
+python $DCFIR_HOME/diff_cf_ir/generate_squares.py $DATASETS_PATH/square_val --split val
