@@ -53,7 +53,7 @@ def construct_args(
         "num_steps": 200,
         "lr": lr,
         "image_folder": CELEBAHQ_FOLDER,
-        "limit_samples": 4,  # TODO: CHANGE THIS TO 64
+        "limit_samples": 64,
         "batch_size": 4,
     }
 
