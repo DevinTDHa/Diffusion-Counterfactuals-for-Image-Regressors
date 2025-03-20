@@ -5,8 +5,9 @@ if [ -z "$DCFIR_OUTPATH" ] || [ -z "$DCFIR_HOME" ]; then
     exit 1
 fi
 
-ACRE_CELEBAHQ_RESULTS="$DCFIR_OUTPATH/ac-re/celebahq"
-DIFFAERE_CELEBAHQ_RESULTS="$DCFIR_OUTPATH/diffae-re/celebahq"
+ACRE_CELEBAHQ_RESULTS="$DCFIR_OUTPATH/ac-re/celebahq/"
+DIFFAERE_CELEBAHQ_RESULTS="$DCFIR_OUTPATH/diffae-re/celebahq/"
+ABLATION_RESULTS="$DCFIR_OUTPATH/diffae-re/ablation/"
 
 echo "Running metrics for Squares"
 bash $DCFIR_HOME/scripts/metrics/scripts/run_metrics_squares_mirror.sh
@@ -16,3 +17,6 @@ echo "Running metrics CelebaHQ..."
 bash $DCFIR_HOME/scripts/metrics/scripts/run_folders.sh $ACRE_CELEBAHQ_RESULTS
 bash scripts/metrics/scripts/run_folders.sh $DIFFAERE_CELEBAHQ_RESULTS
 # Result in $DCFIR_OUTPATH/metrics/celebahq
+
+echo "Running metrics for ablation..."
+bash scripts/metrics/scripts/run_folders.sh $ABLATION_RESULTS "$DCFIR_OUTPATH/metrics/ablation"

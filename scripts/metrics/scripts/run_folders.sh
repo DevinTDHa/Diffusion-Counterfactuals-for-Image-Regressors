@@ -4,20 +4,21 @@ if [ -z "$DCFIR_OUTPATH" ] || [ -z "$DCFIR_HOME" ]; then
     exit 1
 fi
 
-if [ "$#" -ne 1 ]; then
-    echo "Usage: $0 <results_folder>"
+if [ "$#" -lt 1 ] || [ "$#" -gt 2 ]; then
+    echo "Usage: $0 <results_folder> [<output_folder>]"
     exit 1
 fi
 
 IMGS_FOLDER="$DCFIR_OUTPATH/datasets/CelebAMask-HQ/CelebA-HQ-img/"
 RESULTS_FOLDER="$1"
-OUTPUT_FOLDER="$DCFIR_OUTPATH/metrics/celebahq"
+OUTPUT_FOLDER=${2:-"$DCFIR_OUTPATH/metrics/celebahq"}
 
 # Find all cf folders in the results folder. Assuming we used the same original images for all experiments.
-FAKE_FOLDERS=$(find "$RESULTS_FOLDER" -mindepth 1 -maxdepth 1 -type d -o -type l -xtype d -print0 | xargs -0 -I {} echo --fake_folder="{}/cf" | tr '\n' ' ')
+echo "Looking for cf folders in $RESULTS_FOLDER"
+FAKE_FOLDERS=$(find "$RESULTS_FOLDER" -mindepth 1 -maxdepth 1 -type d -o -type l -xtype d | xargs -I {} echo --fake_folder="{}/cf" | tr '\n' ' ')
 
 if [ -z "$FAKE_FOLDERS" ]; then
-    echo "No cf folders found in $RESULTS_FOLDER"
+    echo "No 'cf' folders found in $RESULTS_FOLDER"
     exit 1
 fi
 
