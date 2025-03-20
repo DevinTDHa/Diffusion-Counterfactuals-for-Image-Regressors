@@ -56,4 +56,6 @@ python $DCFIR_HOME/scripts/plots/square_viz.py $RESULT_FOLDER_DIFFAERE $MASKS_FO
 
 
 # ---------------- Ablation ----------------
-# TODO
+echo "Running Diff-AE-RE Ablation experiments..."
+python $DCFIR_HOME/scripts/cf/celebahq/scripts/run_ablation.py
+
