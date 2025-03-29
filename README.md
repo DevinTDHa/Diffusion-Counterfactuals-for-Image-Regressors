@@ -1,6 +1,6 @@
-# Diffusion Counterfactuals for Image Regression
+# Diffusion Counterfactuals for Image Regressors
 
-This is the official repository for the reproduction of the paper Diffusion Counterfactuals for Image Regression (Trung Duc Ha, Sidney Bender).
+This is the official repository for the reproduction of the paper Diffusion Counterfactuals for Image Regressors (Trung Duc Ha, Sidney Bender).
 
 We provide pre-trained models that we used in the paper in Section [Pre-trained models](#pre-trained-models). For a complete reproduction of our results, see Section [Complete Reproduction](#complete-reproduction).
 
