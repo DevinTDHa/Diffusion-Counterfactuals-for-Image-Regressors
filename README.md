@@ -1,6 +1,6 @@
-# Diffusion Counterfactuals for Image Regression
+# Generative Counterfactual Explanations for Image Regression Models
 
-This is the official repository for the reproduction of the paper Diffusion Counterfactuals for Image Regression (Trung Duc Ha, Sidney Bender).
+This is the official repository for the reproduction of the Master Thesis Generative Counterfactual Explanations for Image Regression Models (Trung Duc Ha, Sidney Bender).
 
 We provide pre-trained models that we used in the paper in Section [Pre-trained models](#pre-trained-models). For a complete reproduction of our results, see Section [Complete Reproduction](#complete-reproduction).
 
