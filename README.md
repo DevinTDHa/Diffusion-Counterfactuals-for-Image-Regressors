@@ -16,7 +16,7 @@ We used the following models:
     - For the MNAC classifier, download `checkpoints_oracle_attribute.tar.gz `
 - For the FVA classifier, download `resnet50_ft` from [VGGFace2](https://github.com/cydonia999/VGGFace2-pytorch)
 - Our Models (Skip these if reproducing from scratch), namely the Square generators and regression models (square and imdb-wiki-clean) 
-    - https://tubcloud.tu-berlin.de/s/5qMJAkXPtiW6ozg
+    - See the [Releases](https://github.com/DevinTDHa/Diffusion-Counterfactuals-for-Image-Regressors/releases/)
 
 ## Complete Reproduction
 
