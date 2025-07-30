@@ -6,7 +6,7 @@ import pandas as pd
 import shutil
 import os
 from tqdm import tqdm
-from multiprocessing import Pool
+from multiprocessing import Pool, cpu_count
 
 
 def create_cropped_images_old(root_path, output_path):
@@ -281,7 +281,8 @@ def create_cropped_images_like_celebahq(root_path: str, output_path: str):
 
         return result_list_tqdm
 
-    run_imap_multiprocessing(_process_image, img_landmark_tuples, num_processes=32)
+    print(f"Starting multiprocessing for cropping images with {cpu_count()} processes")
+    run_imap_multiprocessing(_process_image, img_landmark_tuples, num_processes=cpu_count())
 
     # for args in tqdm(img_landmark_tuples, desc="Cropping images"):
     #     _process_image(args)
